@@ -1,0 +1,51 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    color: #bbb;
+    transition: filter 0.5s, transform 0.5s;
+}
+
+body{
+    margin: 0px;
+    background: black;
+}
+
+.app{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scxFigureLine{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scxFigureImageContainer{
+    height: 200px;
+    width: 170px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 0em 1em;
+}
+
+.scxFigureImage{
+    object-fit: contain;
+    width: 100%;
+    transform: scale(150%) translateY(-10%);
+    cursor: pointer;
+}
+
+.scxFigureImage:hover{
+    transform: scale(180%) translateY(-10%);
+}
+
+.brandName{
+    margin-top: 60px;
+    font-size: 1.5em;
+    font-weight: bold;
+}

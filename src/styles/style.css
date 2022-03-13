@@ -1,0 +1,149 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    color: #bbb;
+    transition: filter 0.5s, transform 0.5s, opacity 0.4s;
+}
+
+body{
+    margin: 0px;
+    background: black;
+}
+
+.hidden{
+    display: none;
+}
+
+.app{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.scxFigureLine{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scxFigureImageContainer{
+    position: relative;
+    height: 200px;
+    width: 170px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    margin: 0em 1em;
+    /* isolation: isolate; */
+}
+
+.scxFigureImage{
+    object-fit: contain;
+    width: 100%;
+    transform: scale(150%) translateY(-10%);
+    cursor: pointer;
+}
+
+.scxFigureImage:hover{
+    transform: scale(180%) translateY(-10%);
+}
+
+.brandName{
+    margin-top: 60px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* the plasma banner */
+.imageMod{
+    width: 100%;
+    height: 100%;
+    transform: scale(120%);
+    pointer-events: none;
+}
+
+#mod1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    mix-blend-mode: multiply;
+    width: 100%;
+    height: 100%;
+}
+#mod2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+#mod3{
+    position: absolute;
+    top: 0;
+    right: 0;
+    mix-blend-mode: multiply;
+    width: 100%;
+    height: 100%;
+  
+}
+
+.navText{
+    font-size: 1em;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    margin-bottom: -0.1em;
+}
+
+.navText::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: currentColor;
+    mix-blend-mode: difference;
+    transition: transform 0.4s;
+    transform: scaleY(0);
+    transform-origin: 0 100%;
+}
+
+.navText:hover::after{
+    transform: none;
+    cursor: pointer;
+}
+
+/* scxFigure color visibility improvement */
+.secondFigureImage:hover{
+   mix-blend-mode: color-burn;
+}
+
+/* for phones below 700px */
+@media only screen and (max-width: 700px){
+    .scxFigureLine{
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .scxFigureImageContainer{
+        height: 200px;
+        width: 170px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        margin: 0em -0.5em;
+    }
+
+    .firstFigure{
+        width: 100%;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}
