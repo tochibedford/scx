@@ -1,7 +1,9 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import scxFigureImage from '../images/SCX-MAIN-FIGURES.png'
 
 const ScxFigure = ({id, setBlur, blur, classAdd, imageMod, navText})=>{
+    const history = useHistory();
     const styles = {
         filter: `invert(1) blur(${blur? 2 : 0}px)`
     }
@@ -66,9 +68,12 @@ const ScxFigure = ({id, setBlur, blur, classAdd, imageMod, navText})=>{
         // imgMod.classList.remove("hidden")   
     }
 
+    const handleNav = ()=>{
+        history.push(`/${navText.toLowerCase().replaceAll(' ','-')}`)
+    }
     return(
         <div className={`scxFigureImageContainer ${classAdd}`}>
-            <img id={id} style={styles} onMouseOver={toggleHover} onMouseOut={resetBlur} className={`scxFigureImage ${classAdd}Image`} src={scxFigureImage} alt="scxFigureImage"/>
+            <img id={id} onClick={handleNav} style={styles} onMouseOver={toggleHover} onMouseOut={resetBlur} className={`scxFigureImage ${classAdd}Image`} src={scxFigureImage} alt="scxFigureImage"/>
             <h2 className="navText" style={stylesText}>{navText}</h2>
             <img id={`mod${id}`} src={imageMod} className="imageMod hidden" alt="plasmaImage"/>
         </div>

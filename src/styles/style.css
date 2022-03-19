@@ -1,12 +1,13 @@
 *{
     font-family: 'Courier New', Courier, monospace;
-    color: #bbb;
+    
     transition: filter 0.5s, transform 0.5s, opacity 0.4s;
 }
 
 body{
     margin: 0px;
     background: black;
+    color: #bbb;
 }
 
 .hidden{
@@ -122,6 +123,119 @@ body{
 .secondFigureImage:hover{
    mix-blend-mode: color-burn;
 }
+
+/* Other page Styling (Store Tabula rasa */
+.page{
+    background: #efefef;
+    height: 100%;
+    width: 100%;
+    
+
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 1em;
+    color: black;
+}
+
+.topNav{
+    grid-column: 1/3;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoImageContainer{
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    margin-left: 1em;
+}
+
+.logoImage{
+    mix-blend-mode: darken;
+    width: 100%;
+    object-fit: contain;
+}
+
+.pageTitle{
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.sideNav{
+    width: 200px;
+}
+
+.sideNav > a{
+    text-decoration: none;
+
+}
+.sideNav > a:visited{
+    color: black;
+}
+
+.sideNavElement{
+    background: #ddd;
+    margin: 0.5em 0em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5em;
+    font-weight: bold;
+    position: relative;
+    color: #333;
+}
+
+.activeSideNav{
+    background: black ;
+    color: white;
+    margin: 0.5em 0em;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    padding-left: 0.5em;
+    font-weight: bold;
+    position: relative;
+}
+
+.sideNavElement::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: currentColor;
+    mix-blend-mode: difference;
+    transition: transform 0.4s;
+    transform: scaleY(0);
+    transform-origin: 0 100%;
+}
+
+.sideNavElement:hover::after{
+    transform: none;
+    cursor: pointer;
+}
+
+/* dev visibility: remove whenever*/
+.page>div{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    border: 1px solid;
+}
+
+/* .page>div:nth-child(even){
+    background: #743;
+}
+.page>div:nth-child(odd){
+    background: #356;
+} */
 
 /* for phones below 700px */
 @media only screen and (max-width: 700px){
