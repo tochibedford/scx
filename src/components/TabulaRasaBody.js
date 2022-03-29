@@ -1,11 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const StoreBody = () => {
+const TabulaRasaBody = () => {
     
     const canvasRef = useRef(null);
     const contextRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [color, setColor] = useState("rgb(0,0,0)");
+    const [lineWidth, setLineWidth] = useState(3);
+    const [lineOpacity, setLineOpacity] = useState(0.1);
+
+    //get current position of mouse
+    function getMousePosition(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        }
+    }
 
     var touchAvailable = ('createTouch' in document) || ('onstarttouch' in window);
 
@@ -30,9 +41,51 @@ const StoreBody = () => {
         context.lineCap = 'round';
         context.lineJoin = 'round';
         context.strokeStyle = color;
-        context.lineWidth = 3;
+        context.lineWidth = lineWidth;
+        context.globalAlpha = lineOpacity;
         contextRef.current = context;
-    },[]);
+
+        canvas.addEventListener('touchstart', function (e) {
+            if (e.target === canvas) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        canvas.addEventListener('touchend', function (e) {
+            if (e.target === canvas) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', function (e) {
+            if (e.target === canvas) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        canvas.addEventListener('touchstart',function(e){
+            var mousePos = getMousePosition(canvas,e)
+            var touch = e.touches[0];
+            var mouseEvent =  new MouseEvent("mousedown",{
+                clientX:touch.clientX,
+                clientY:touch.clientY
+            });
+            console.log(mouseEvent)
+            canvas.dispatchEvent(mouseEvent)
+        },false);
+        canvas.addEventListener('touchend', function (e) {
+            var mouseEvent = new MouseEvent("mouseup", {});
+            canvas.dispatchEvent(mouseEvent)
+        }, false);
+        canvas.addEventListener('touchmove', function (e) {
+            var touch = e.touches[0];
+            var mouseEvent = new MouseEvent("mousemove", {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent)
+        }, false);
+    }, []);
 
     const startDrawing = ({nativeEvent})=>{
         const {offsetX, offsetY} = nativeEvent;
@@ -62,24 +115,15 @@ const StoreBody = () => {
 
     return (
         <div className="tabulaRasaBody">
-            {touchAvailable?
-                <canvas 
-                ref = {canvasRef} 
-                onTouchStart={startDrawing} 
-                onTouchEnd={finishDrawing} 
-                onTouchCancel={finishDrawing} 
-                onTouchMove={draw} 
-                className="tabulaCanvas"/>:
-                <canvas
-                    ref={canvasRef}
-                    onMouseDown={startDrawing}
-                    onMouseUp={finishDrawing}
-                    onMouseMove={draw}
-                    className="tabulaCanvas"
-                />
-            }
+            <canvas
+                ref={canvasRef}
+                onMouseDown={startDrawing}
+                onMouseUp={finishDrawing}
+                onMouseMove={draw}
+                className="tabulaCanvas"
+            />
         </div>
     )
 }
 
-export default StoreBody;
+export default TabulaRasaBody;
