@@ -275,6 +275,11 @@ model-viewer{
     height: 300px;
 }
 
+.tabulaCanvas{
+    cursor: crosshair;
+    border: 1px solid black;
+}
+
 /* dev visibility: remove whenever*/
 
 
