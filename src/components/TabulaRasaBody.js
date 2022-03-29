@@ -60,8 +60,12 @@ const StoreBody = () => {
             <canvas
                 ref = {canvasRef}
                 onMouseDown={startDrawing}
+                onTouchStart={startDrawing}
                 onMouseUp={finishDrawing}
+                onTouchEnd={finishDrawing}
+                onTouchCancel={finishDrawing}
                 onMouseMove={draw}
+                onTouchMove={draw}
                 className="tabulaCanvas"
             />
         </div>
