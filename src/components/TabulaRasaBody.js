@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 
 const StoreBody = () => {
-
+    
     const canvasRef = useRef(null);
     const contextRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [color, setColor] = useState("rgb(0,0,0)");
+
+    var touchAvailable = ('createTouch' in document) || ('onstarttouch' in window);
 
     // 0 to 255;
     const number255Generator = () => {
@@ -37,6 +39,7 @@ const StoreBody = () => {
         contextRef.current.beginPath();
         contextRef.current.moveTo(offsetX, offsetY);
         setIsDrawing(true);
+        return false;
     }
 
     const finishDrawing = ()=>{
@@ -44,6 +47,7 @@ const StoreBody = () => {
         setColor(`rgb(${number255Generator()}, ${number255Generator()}, ${number255Generator()})`)
         contextRef.current.strokeStyle = color;
         setIsDrawing(false);
+        return false;
     }
 
     const draw = ({nativeEvent})=>{
@@ -53,21 +57,27 @@ const StoreBody = () => {
         const {offsetX, offsetY} = nativeEvent;
         contextRef.current.lineTo(offsetX, offsetY);
         contextRef.current.stroke();
+        return false;
     }
 
     return (
         <div className="tabulaRasaBody">
-            <canvas
-                ref = {canvasRef}
-                onMouseDown={startDrawing}
-                onTouchStart={startDrawing}
-                onMouseUp={finishDrawing}
-                onTouchEnd={finishDrawing}
-                onTouchCancel={finishDrawing}
-                onMouseMove={draw}
-                onTouchMove={draw}
-                className="tabulaCanvas"
-            />
+            {touchAvailable?
+                <canvas 
+                ref = {canvasRef} 
+                onTouchStart={startDrawing} 
+                onTouchEnd={finishDrawing} 
+                onTouchCancel={finishDrawing} 
+                onTouchMove={draw} 
+                className="tabulaCanvas"/>:
+                <canvas
+                    ref={canvasRef}
+                    onMouseDown={startDrawing}
+                    onMouseUp={finishDrawing}
+                    onMouseMove={draw}
+                    className="tabulaCanvas"
+                />
+            }
         </div>
     )
 }
