@@ -24,7 +24,7 @@ const TabulaRasaBody = () => {
     }
 
     // states
-    const [canvasWidth, setCanvasWidth] = useState(400);
+    const [canvasWidth, setCanvasWidth] = useState(isMobile?300:400);
     const [canvasHeight, setCanvasHeight] = useState(400);
     const [color, setColor] = useState(rgbToHex(newRgb()))
     const [randomize, setRandomize] = useState(true);

@@ -175,6 +175,7 @@ body{
 
 .sideNav{
     width: 200px;
+    height: 100%;
 }
 
 .sideNav > a{
@@ -296,6 +297,89 @@ model-viewer{
 }
 /* dev visibility: remove whenever*/
 
+/* readjust pages js for devices under 850px width */
+@media only screen and (max-width: 850px){
+    body{
+        background-color: #efefef;
+    }
+    .app{
+        font-size: 0.5em;
+        background-color: #efefef;
+    }
+    .page{
+        grid-template-columns: auto;
+    }
+    .topNav{
+        grid-column: 1/2;
+        height: 35px;
+    }
+    .logoImageContainer{
+        height: 30px;
+        width: 30px;
+    }
+
+    .navArrow{
+        position: absolute;
+        right: 2px;
+        top: calc(50% - 1em);
+        font-size: 2.5em;
+        font-weight: bold;
+        transform: scaleY(1.5);
+    }
+
+    .rotateNavArrow{
+        transform: rotate(180deg);
+    }
+
+    .sideNav{
+        position: fixed;
+        left: 0;
+        top: 100px;
+        height: 300px;
+        background: #efefef;
+        z-index: 3;
+        box-shadow: 0px 0px 2px black;
+    }
+    .hiddenSideNav{
+        transform: translateX(-85%);
+    }
+
+    .sideNavElement{
+        font-size: 1.5em;
+        height: 3em;
+        
+    }
+    .activeSideNav{
+        font-size: 1.5em;
+        height: 3em;
+    }
+
+    .tabulaRasaBody{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .canvasButtons{
+        transform: translateY(-5em);
+        flex-direction: row;
+        justify-content: center;
+        font-size: 1.5em;
+    }
+    .canvasButtons > div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* store */
+    .storeBody{
+        flex-direction: column;
+    }
+    .item{
+        margin: 2em 0.5em;
+        font-size: 2em;
+    }
+}
 
 /* for phones below 700px */
 @media only screen and (max-width: 700px){

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 const Sidenav = ({pageTitle}) => {
@@ -22,9 +22,26 @@ const Sidenav = ({pageTitle}) => {
             )
         }
     })
+
+    const [navArrow, setNavArrow] = useState(false) // false meaning the side Nav should show
+    
+    const handleRightArrow = (e)=>{
+        if(!navArrow){
+            e.target.parentNode.classList.add("hiddenSideNav")
+            e.target.classList.add("rotateNavArrow")
+            setNavArrow(prev=>(!prev))
+        }else{
+            e.target.parentNode.classList.remove("hiddenSideNav")
+            e.target.classList.remove("rotateNavArrow")
+            setNavArrow(prev => (!prev))
+        }
+
+    }
+
     return(
         <div className='sideNav'>
             {navElements}
+            <div className="navArrow" onClick={handleRightArrow}>{`<<`}</div>
         </div>
     )
 }
