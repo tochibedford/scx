@@ -278,6 +278,11 @@ model-viewer{
 .tabulaCanvas{
     cursor: crosshair;
     border: 1px solid black;
+    overflow: none;
+}
+
+.tabulaRasaBody{
+    overflow: none;
 }
 
 /* dev visibility: remove whenever*/
