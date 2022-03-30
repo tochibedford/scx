@@ -300,7 +300,7 @@ model-viewer{
 /* readjust pages js for devices under 850px width */
 @media only screen and (max-width: 850px){
     body{
-        background-color: #efefef;
+        background-color: black;
     }
     .app{
         font-size: 0.5em;
