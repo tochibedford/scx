@@ -3,10 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ScxFigure from './components/ScxFigure'
 import Pages from './components/Pages'
 import './styles/style.css'
-import kevBackground1 from './plasma/kevBackground1.gif'
 import kevBackground2 from './plasma/kevBackground2.gif'
-// import kevBackground2 from './plasma/test.mp4'
-import kevBackground3 from'./plasma/kevBackground3.gif'
 
 const App = ()=>{
     const [blur, setBlur] = useState([false, false, false]);

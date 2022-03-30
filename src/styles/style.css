@@ -282,9 +282,18 @@ model-viewer{
 }
 
 .tabulaRasaBody{
-    overflow: none;
+    display: flex;
 }
 
+.canvasButtons{
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.canvasButtons > div{
+    margin: 0.5em;
+}
 /* dev visibility: remove whenever*/
 
 
