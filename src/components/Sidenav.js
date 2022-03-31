@@ -6,7 +6,7 @@ const Sidenav = ({pageTitle}) => {
     const navElements = nav.map((element, index)=>{
         if (element.toLowerCase() === pageTitle.toLowerCase()){
             return(
-                <Link key={index+1} to={`/${element.toLowerCase().replaceAll(' ','-')}`}>
+                <Link key={index + 1} to={`/${element.toLowerCase().replace(/\W/g, "-") }`}>
                     <div className="activeSideNav">
                         {element.toUpperCase()}
                     </div>
@@ -14,7 +14,7 @@ const Sidenav = ({pageTitle}) => {
             )
         } else{
             return (
-                <Link key={index + 1} to={`/${element.toLowerCase().replaceAll(' ', '-')}`}>
+                <Link key={index + 1} to={`/${element.toLowerCase().replace(/\W/g, "-") }`}>
                     <div className="sideNavElement">
                         {element.toUpperCase()}
                     </div>

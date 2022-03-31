@@ -229,6 +229,10 @@ body{
     cursor: pointer;
 }
 
+.navArrow{
+    display: none;
+}
+
 /* store styling */
 .storeBody{
     display: flex;
