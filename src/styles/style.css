@@ -358,7 +358,7 @@ model-viewer{
     }
 
     .navArrow{
-        display: auto;
+        display: block;
     }
 
     .tabulaRasaBody{
