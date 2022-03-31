@@ -311,6 +311,7 @@ model-viewer{
     }
     .page{
         grid-template-columns: auto;
+        height: 100vh;
     }
     .topNav{
         grid-column: 1/2;
@@ -359,6 +360,10 @@ model-viewer{
 
     .navArrow{
         display: block;
+    }
+
+    .storeBody{
+        background: #efefef;
     }
 
     .tabulaRasaBody{
