@@ -357,6 +357,10 @@ model-viewer{
         height: 3em;
     }
 
+    .navArrow{
+        display: auto;
+    }
+
     .tabulaRasaBody{
         flex-direction: column;
         justify-content: space-around;
