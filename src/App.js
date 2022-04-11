@@ -7,11 +7,20 @@ import kevBackground2 from './plasma/kevBackground2.gif'
 
 const App = ()=>{
     const [blur, setBlur] = useState([false, false, false]);
+    setInterval(()=>{
+        if(window.location.pathname === "/"){
+            document.body.style.backgroundColor="black";
+        }else{
+            document.body.style.backgroundColor="#efefef";
+        }
+    }, 300)
+    
     return(
         <Router>
             <div className="app">
                 <Switch>
                     <Route exact path="/">
+                        
                         <div className="scxFigureLine">
                             <ScxFigure
                                 id={1}
