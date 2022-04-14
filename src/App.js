@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ScxFigure from './components/ScxFigure'
-import Pages from './components/Pages'
 import './styles/style.css'
 import kevBackground2 from './plasma/kevBackground2.gif'
+import EmailModal from './components/EmailModal'
 
 const App = ()=>{
     const [blur, setBlur] = useState([false, false, false]);
@@ -20,14 +20,13 @@ const App = ()=>{
             <div className="app">
                 <Switch>
                     <Route exact path="/">
-                        
                         <div className="scxFigureLine">
                             <ScxFigure
                                 id={1}
                                 blur={blur[0]}
                                 setBlur={setBlur}
                                 imageMod={kevBackground2}
-                                navText="STORE"
+                                navText=""
                                 classAdd="firstFigure"
                             />
                             <ScxFigure
@@ -35,7 +34,7 @@ const App = ()=>{
                                 blur={blur[1]}
                                 setBlur={setBlur}
                                 imageMod={kevBackground2}
-                                navText="CHOOSE YOUR FATE"
+                                navText=""
                                 classAdd="secondFigure"
                             />
                             <ScxFigure
@@ -43,20 +42,14 @@ const App = ()=>{
                                 blur={blur[2]}
                                 setBlur={setBlur}
                                 imageMod={kevBackground2}
-                                navText="TABULA RASA"
+                                navText=""
                                 classAdd="thirdFigure"
                             />
                         </div>
+                        <div className="motto">"DESIGNER WEARHOUSE FOR YOUR DIGITAL FOOTPRINT."</div>
+                        <div className="instructions">☝ CLICK ON ANY SCX FIGURE TO SIGN UP 👆</div>
                         <div className="brandName">SOCIAL CRUCIFIXION</div>
-                    </Route>
-                    <Route exact path="/store">
-                        <Pages pageTitle="store"/>
-                    </Route>
-                    <Route exact path="/choose-your-fate">
-                        <Pages pageTitle="choose your fate"/>
-                    </Route>
-                    <Route exact path="/tabula-rasa">
-                        <Pages pageTitle="tabula rasa"/>
+                        <EmailModal />
                     </Route>
                     <Route>
                         PAGE NOT FOUND

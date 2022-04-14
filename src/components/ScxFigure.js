@@ -60,21 +60,13 @@ const ScxFigure = ({id, setBlur, blur, classAdd, imageMod, navText})=>{
             imgMod.lastChild.classList.add("hidden");
         }
     }
-    
-    // check if component instance is the middle one, then remove hidden
-    if(id-1 === 2){
-        // const imgMod = document.querySelector(".secondFigure");
-        // console.log(imgMod)
-        // imgMod.classList.remove("hidden")   
-    }
 
     const handleNav = ()=>{
-        history.push(`/${navText.toLowerCase().replaceAll(' ','-')}`)
+        document.querySelector(".emailModal").style.display = "flex"
     }
     return(
         <div className={`scxFigureImageContainer ${classAdd}`}>
             <img id={id} onClick={handleNav} style={styles} onMouseOver={toggleHover} onMouseOut={resetBlur} className={`scxFigureImage ${classAdd}Image`} src={scxFigureImage} alt="scxFigureImage"/>
-            <h2 className="navText" style={stylesText}>{navText}</h2>
             <img id={`mod${id}`} src={imageMod} className="imageMod hidden" alt="plasmaImage"/>
         </div>
     )
