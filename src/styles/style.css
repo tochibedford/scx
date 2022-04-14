@@ -64,7 +64,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 .scxFigureImage:hover{
-    transform: scale(180%) translateY(-10%);
+    transform: scale(180%) translateY(-10%); 
+}
+
+
+.scxLogoImage:hover{
+    transform: scale(150%) !important; 
 }
 
 .motto{
@@ -169,13 +174,36 @@ body::-webkit-scrollbar-thumb {
     z-index: 5010;
 }
 
-.emailInput{
-    margin: 1em;
+.modalInput{
+    margin: 0.5em;
     width: 80%;
     height: 30px;
     border: solid 1px black;
     text-align: center;
     z-index: 5010;
+}
+
+@keyframes swoopIn {
+    from{
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modalButton{
+    font-weight: bold;
+    background: black;
+    color: #efefef;
+    cursor: pointer;
+    
+}
+
+.swoopIn{
+    animation: swoopIn 1s;
 }
 
 .emailInput:focus{
@@ -549,5 +577,12 @@ model-viewer{
         width: 100%;
         grid-column-start: 1;
         grid-column-end: 3;
+    }
+
+    .scxLogoLarge{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
     }
 }

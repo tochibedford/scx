@@ -1,9 +1,8 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import scxLogo from '../images/scxLogo.png'
 import scxFigureImage from '../images/SCX-MAIN-FIGURES.png'
 
-const ScxFigure = ({id, setBlur, blur, classAdd, imageMod, navText})=>{
-    const history = useHistory();
+const ScxFigure = ({id, setBlur, blur, classAdd, logo, imageMod, navText})=>{
     const styles = {
         filter: `invert(1) blur(${blur? 2 : 0}px)`
     }
@@ -64,9 +63,16 @@ const ScxFigure = ({id, setBlur, blur, classAdd, imageMod, navText})=>{
     const handleNav = ()=>{
         document.querySelector(".emailModal").style.display = "flex"
     }
+
+    useEffect(()=>{
+        if(logo){
+            document.querySelector(".scxFigureImage").style.transform="none"
+        }
+    },[logo])
+
     return(
-        <div className={`scxFigureImageContainer ${classAdd}`}>
-            <img id={id} onClick={handleNav} style={styles} onMouseOver={toggleHover} onMouseOut={resetBlur} className={`scxFigureImage ${classAdd}Image`} src={scxFigureImage} alt="scxFigureImage"/>
+        <div className={`scxFigureImageContainer ${classAdd} ${logo ? "scxLogoLarge" : ""}`}>
+            <img id={id} onClick={handleNav} style={styles} onMouseOver={toggleHover} onMouseOut={resetBlur} className={`scxFigureImage ${classAdd}Image ${logo ? "scxLogoImage":""}`} src={logo?scxLogo:scxFigureImage} alt="scxFigureImage"/>
             <img id={`mod${id}`} src={imageMod} className="imageMod hidden" alt="plasmaImage"/>
         </div>
     )

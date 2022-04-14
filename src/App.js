@@ -21,10 +21,11 @@ const App = ()=>{
                 <Switch>
                     <Route exact path="/">
                         <div className="scxFigureLine">
-                            <ScxFigure
+                            {window.innerWidth>700?<><ScxFigure
                                 id={1}
                                 blur={blur[0]}
                                 setBlur={setBlur}
+                                logo={false}
                                 imageMod={kevBackground2}
                                 navText=""
                                 classAdd="firstFigure"
@@ -33,6 +34,7 @@ const App = ()=>{
                                 id={2}
                                 blur={blur[1]}
                                 setBlur={setBlur}
+                                logo={false}
                                 imageMod={kevBackground2}
                                 navText=""
                                 classAdd="secondFigure"
@@ -41,10 +43,21 @@ const App = ()=>{
                                 id={3}
                                 blur={blur[2]}
                                 setBlur={setBlur}
+                                logo={false}
                                 imageMod={kevBackground2}
                                 navText=""
                                 classAdd="thirdFigure"
-                            />
+                                /></>:
+                                <ScxFigure
+                                    id={2}
+                                    blur={blur[1]}
+                                    setBlur={setBlur}
+                                    logo = {true}
+                                    imageMod={kevBackground2}
+                                    navText=""
+                                    classAdd="secondFigure"
+                                />
+                                }
                         </div>
                         <div className="motto">"DESIGNER WEARHOUSE FOR YOUR DIGITAL FOOTPRINT."</div>
                         <div className="instructions">CLICK ON ANY SCX FIGURE TO SIGN UP</div>
