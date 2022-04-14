@@ -3,10 +3,20 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import ScxFigure from './components/ScxFigure'
 import './styles/style.css'
 import kevBackground2 from './plasma/kevBackground2.gif'
+import scxLogo from './images/scxLogo.png'
 import EmailModal from './components/EmailModal'
 
 const App = ()=>{
     const [blur, setBlur] = useState([false, false, false]);
+    const [logo, setLogo] = useState(false);
+
+    const showModal = () => {
+        document.querySelector(".emailModal").style.display = "flex"
+    }
+    
+    window.onresize = ()=>{
+        window.innerWidth<700?setLogo(false):setLogo(true)
+    }
     setInterval(()=>{
         if(window.location.pathname === "/"){
             document.body.style.backgroundColor="black";
@@ -52,7 +62,7 @@ const App = ()=>{
                                     id={2}
                                     blur={blur[1]}
                                     setBlur={setBlur}
-                                    logo = {true}
+                                    logo = {!logo}
                                     imageMod={kevBackground2}
                                     navText=""
                                     classAdd="secondFigure"
@@ -62,6 +72,7 @@ const App = ()=>{
                         <div className="motto">"DESIGNER WEARHOUSE FOR YOUR DIGITAL FOOTPRINT."</div>
                         <div className="instructions">CLICK ON ANY SCX FIGURE TO SIGN UP</div>
                         <div className="brandName">SOCIAL CRUCIFIXION</div>
+                        <div className="landingPageBrand" onClick={showModal}><div className="landingPageBrandImageContainer"><img className="landingPageBrandImage" src={scxLogo} alt="brand-logo"/></div></div>
                         <EmailModal />
                     </Route>
                     <Route>

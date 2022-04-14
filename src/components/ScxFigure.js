@@ -60,19 +60,13 @@ const ScxFigure = ({id, setBlur, blur, classAdd, logo, imageMod, navText})=>{
         }
     }
 
-    const handleNav = ()=>{
+    const showModal = ()=>{
         document.querySelector(".emailModal").style.display = "flex"
     }
 
-    useEffect(()=>{
-        if(logo){
-            document.querySelector(".scxFigureImage").style.transform="none"
-        }
-    },[logo])
-
     return(
         <div className={`scxFigureImageContainer ${classAdd} ${logo ? "scxLogoLarge" : ""}`}>
-            <img id={id} onClick={handleNav} style={styles} onMouseOver={toggleHover} onMouseOut={resetBlur} className={`scxFigureImage ${classAdd}Image ${logo ? "scxLogoImage":""}`} src={logo?scxLogo:scxFigureImage} alt="scxFigureImage"/>
+            <img id={id} onClick={showModal} style={styles} onMouseOver={toggleHover} onMouseOut={resetBlur} className={`${classAdd}Image ${logo ? "scxLogoImage" :"scxFigureImage"}`} src={logo?scxLogo:scxFigureImage} alt="scxFigureImage"/>
             <img id={`mod${id}`} src={imageMod} className="imageMod hidden" alt="plasmaImage"/>
         </div>
     )

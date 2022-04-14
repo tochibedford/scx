@@ -53,7 +53,6 @@ body::-webkit-scrollbar-thumb {
     display: flex;
     justify-content: center;
     margin: 0em 1em;
-    /* isolation: isolate; */
 }
 
 .scxFigureImage{
@@ -67,10 +66,15 @@ body::-webkit-scrollbar-thumb {
     transform: scale(180%) translateY(-10%); 
 }
 
-
-.scxLogoImage:hover{
-    transform: scale(150%) !important; 
+.scxLogoImage {
+    object-fit: contain;
+    width: 100%;
+    cursor: pointer;
 }
+.scxLogoImage:hover {
+    transform: scale(140%);
+}
+
 
 .motto{
     font-size: 1.5rem;
@@ -244,7 +248,18 @@ body::-webkit-scrollbar-thumb {
     animation-timing-function: linear;
 }
 
+.landingPageBrandImageContainer{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
 
+.landingPageBrandImage{
+    object-fit: contain;
+    width: 100%;
+    filter: invert();
+    mix-blend-mode: screen;
+}
 
 .navText{
     font-size: 1em;
