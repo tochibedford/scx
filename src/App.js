@@ -13,7 +13,7 @@ const App = ()=>{
     const showModal = () => {
         document.querySelector(".emailModal").style.display = "flex"
     }
-    
+
     window.onresize = ()=>{
         window.innerWidth<700?setLogo(false):setLogo(true)
     }
@@ -72,7 +72,7 @@ const App = ()=>{
                         <div className="motto">"DESIGNER WEARHOUSE FOR YOUR DIGITAL FOOTPRINT."</div>
                         <div className="instructions">CLICK ON ANY SCX FIGURE TO SIGN UP</div>
                         <div className="brandName">SOCIAL CRUCIFIXION</div>
-                        <div className="landingPageBrand" onClick={showModal}><div className="landingPageBrandImageContainer"><img className="landingPageBrandImage" src={scxLogo} alt="brand-logo"/></div></div>
+                        {logo?"":<div className="landingPageBrand" onClick={showModal}><div className="landingPageBrandImageContainer"><img className="landingPageBrandImage" src={scxLogo} alt="brand-logo"/></div></div>}
                         <EmailModal />
                     </Route>
                     <Route>
