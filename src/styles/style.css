@@ -147,7 +147,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 .emailForm{
-    width: 500px;
+    width: 100%;
+    max-width: 400px;
     height: 300px;
     background: #efefef;
     color: black;

@@ -47,7 +47,7 @@ const App = ()=>{
                             />
                         </div>
                         <div className="motto">"DESIGNER WEARHOUSE FOR YOUR DIGITAL FOOTPRINT."</div>
-                        <div className="instructions">☝ CLICK ON ANY SCX FIGURE TO SIGN UP 👆</div>
+                        <div className="instructions">CLICK ON ANY SCX FIGURE TO SIGN UP</div>
                         <div className="brandName">SOCIAL CRUCIFIXION</div>
                         <EmailModal />
                     </Route>
