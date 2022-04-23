@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import ScxFigure from './components/ScxFigure';
 import './styles/style.css';
@@ -11,12 +11,16 @@ const App = ()=>{
     const [blur, setBlur] = useState([false, false, false]);
     const [logo, setLogo] = useState(false);
 
+    useEffect(()=>{
+        window.innerWidth < 700 ? setLogo(true) : setLogo(false);
+    },[])
+
     const showModal = () => {
         document.querySelector(".emailModal").style.display = "flex"
     }
 
     window.onresize = ()=>{
-        window.innerWidth<700?setLogo(false):setLogo(true)
+        window.innerWidth<700?setLogo(true):setLogo(false)
     }
     setInterval(()=>{
         if(window.location.pathname === "/"){
@@ -63,7 +67,7 @@ const App = ()=>{
                                     id={2}
                                     blur={blur[1]}
                                     setBlur={setBlur}
-                                    logo = {!logo}
+                                    logo = {logo}
                                     imageMod={kevBackground2}
                                     navText=""
                                     classAdd="secondFigure"
@@ -71,7 +75,7 @@ const App = ()=>{
                                 }
                         </div>
                         <div className="motto">"DESIGNER WEARHOUSE FOR YOUR DIGITAL FOOTPRINT."</div>
-                        <div className="instructions">CLICK ON ANY SCX FIGURE TO SIGN UP</div>
+                        <div className="instructions">{logo ? "CLICK ON THE SCX LOGO TO SIGN UP":"CLICK ON ANY SCX FIGURE TO SIGN UP"}</div>
                         <div className="brandName">SOCIAL CRUCIFIXION</div>
                         {logo?"":<div className="landingPageBrand" onClick={showModal}><div className="landingPageBrandImageContainer"><img className="landingPageBrandImage" src={scxLogo} alt="brand-logo"/></div></div>}
                         <EmailModal db={db}/>
