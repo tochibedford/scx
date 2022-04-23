@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import ScxFigure from './components/ScxFigure'
-import './styles/style.css'
-import kevBackground2 from './plasma/kevBackground2.gif'
-import scxLogo from './images/scxLogo.png'
-import EmailModal from './components/EmailModal'
+import React, {useState} from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ScxFigure from './components/ScxFigure';
+import './styles/style.css';
+import kevBackground2 from './plasma/kevBackground2.gif';
+import scxLogo from './images/scxLogo.png';
+import EmailModal from './components/EmailModal';
+import {db} from './firebase-config';
 
 const App = ()=>{
     const [blur, setBlur] = useState([false, false, false]);
@@ -73,7 +74,7 @@ const App = ()=>{
                         <div className="instructions">CLICK ON ANY SCX FIGURE TO SIGN UP</div>
                         <div className="brandName">SOCIAL CRUCIFIXION</div>
                         {logo?"":<div className="landingPageBrand" onClick={showModal}><div className="landingPageBrandImageContainer"><img className="landingPageBrandImage" src={scxLogo} alt="brand-logo"/></div></div>}
-                        <EmailModal />
+                        <EmailModal db={db}/>
                     </Route>
                     <Route>
                         PAGE NOT FOUND

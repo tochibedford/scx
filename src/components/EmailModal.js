@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
+import {addDoc, collection} from 'firebase/firestore';
 
-const EmailModal = ()=>{
+const EmailModal = ({db})=>{
+    const colRef = collection(db, "mailing-list");
+
     const [userEmail, setUserEmail] = useState("");
     const [userName, setUserName] = useState("");
     const [submitStatus, setSubmitStatus] = useState("SUBMIT");
@@ -25,17 +28,27 @@ const EmailModal = ()=>{
         setUserName(e.target.value);
     }
 
-    const handleSubmit = (e)=>{
-        //do something with name and email
-        setUserName("");
-        setUserEmail("");
-        document.querySelector(".modalButtonText").classList.add("swoopIn");
-        setSubmitStatus("✔");
-        setInterval(()=>{
-            document.querySelector(".modalButtonText").classList.remove("swoopIn");
-            setSubmitStatus("SUBMIT");
-        }, 1000)
+    const addUserData = (userName, userEmail)=>{
+        addDoc(colRef, {
+            name: userName,
+            email: userEmail
+        }).then(()=>{
+            setUserName("");
+            setUserEmail("");
+            document.querySelector(".modalButtonText").classList.add("swoopIn");
+            setSubmitStatus("✔");
+            setInterval(() => {
+                document.querySelector(".modalButtonText").classList.remove("swoopIn");
+                setSubmitStatus("SUBMIT");
+            }, 1000)
+        }).catch(err=>{
+            console.log(err.message)
+        })
+    }
 
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        addUserData(userName, userEmail);
     }
 
     return(
