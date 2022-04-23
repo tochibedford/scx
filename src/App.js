@@ -36,7 +36,7 @@ const App = ()=>{
                 <Switch>
                     <Route exact path="/">
                         <div className="scxFigureLine">
-                            {window.innerWidth>700?<><ScxFigure
+                            {!logo?<><ScxFigure
                                 id={1}
                                 blur={blur[0]}
                                 setBlur={setBlur}
